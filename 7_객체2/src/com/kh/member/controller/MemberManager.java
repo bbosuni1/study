@@ -149,9 +149,9 @@ public class MemberManager {
 			
 			if(idx == -1 )System.out.println("없는 회원 입니다. ");
 			else {
-				System.out.println("정말 탈퇴 하실껀가요? (Y/N)");
+				System.out.print("정말 탈퇴 하실껀가요? (Y/N)");
 				char answer = sc.next().toUpperCase().charAt(0);
-				if(answer == 'y') {
+				if(answer == 'Y') {
 					for(int i = idx ; i < count ; i++) {
 						
 						// 만약에 삭제하는 회원이 마지막 회원이면 

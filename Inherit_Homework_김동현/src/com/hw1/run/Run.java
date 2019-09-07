@@ -26,7 +26,7 @@ public class Run {
 			stuArr[1] = new Student(21, 187.3, 80.0, "김말똥", 2, "경역학과");
 			stuArr[2] = new Student(23, 167.3, 45.0, "강개순", 4, "정보통신공학과");
 		}
-		for( int i =0 ; i <3 ; i++)	System.out.println(stuArr[i].information());
+		for(Student st : stuArr)	System.out.println(st.information());
 
 		System.out.println("-----------------------------------------------------");
 		
