@@ -2,8 +2,6 @@ package com.kh.poly;
 
 public class CargoPlane extends Plane {
 	
-	private int distance;
-
 	public CargoPlane() {
 		super();
 	}
@@ -13,16 +11,8 @@ public class CargoPlane extends Plane {
 	}
 
 	@Override
-	public void flight() {
+	public void flight(int distance) {
 		setFuelSize(getFuelSize() - distance*5);
-	}
-
-	public int getDistance() {
-		return distance;
-	}
-
-	public void setDistance(int distance) {
-		this.distance = distance;
 	}
 
 }
