@@ -26,11 +26,11 @@ public class Company {
 				// 인센티브 100 씩 지급 후 tax 까지 출력
 				for(int i = 0; i <2 ; i ++) {
 						if(employees[i] instanceof Secretary) {  // employees 의 자료형이 Secretary  일때
-							Secretary money1 = (Secretary) employees[i]; // 다운캐스팅
-							money1.incentive(100);  // 인센티브 100 더하기
+							//Secretary money1 = (Secretary) employees[i]; // 다운캐스팅
+							((Secretary)employees[i]).incentive(100);  // 다운캐스팅 방법1
 						}
 						else if(employees[i] instanceof Sales) { // employees 의 자료형이 Salse  일때
-							Sales money2 = (Sales) employees[i];
+							Sales money2 = (Sales) employees[i]; // 다운캐스팅 방법2
 							money2.incentive(100); 
 						}
 				
