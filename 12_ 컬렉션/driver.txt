@@ -1,0 +1,6 @@
+#JDBC \uC124\uC815
+#Mon Sep 16 15:08:50 KST 2019
+url=jdbc\:oracle\:thin\:@localhost\:1521\:XE
+driver=oracle.jdbc.driver.OracleDriver
+pwd=pass01
+id=user01
