@@ -30,6 +30,7 @@ public class BookListTest {
 	}// 메인 메소드
 	
 	// list에 Book 객체를 담는다
+	// list.add( 인덱스 번호 , new 자료형( 내용 ) );
 	public void storeList(List<Book> list) {
 		list.add(0, new Book("자바의 정석", "남궁성", 30000, "도우출판", 0.15));
 		list.add(1, new Book("열혈강의 자바", "구정은", 29000, "프리렉", 0.2));
@@ -37,8 +38,11 @@ public class BookListTest {
 	}
 
 	public void saveFile(ArrayList<Book> list) {
-	
+		// 입출력스트림 objStream 수업 내용 참조 하세요.
+		
+		// ObjectOutputStream 를 사용하여 book.dat 파일에 list 저장
 		// try with resource 를 사용하여 따로 close 처리없이 예외처리
+		
 		try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("books.dat"))){
 			
 			// list의 배열크기 만큼 list.get()으로 뽑아온 객체를 저장한다.
@@ -58,14 +62,22 @@ public class BookListTest {
 	}
 	
 	public List<Book> loadFile() {
-		List<Book> list =null;
+		
+		// list 객체를 초기화 해준다.
+		List<Book> list = null;
+		
+		// ObjectInputStream 를 이용하여 book.dat 파일을 읽어와서 list에 담는다.
 		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("books.dat"))) {
 			list = new ArrayList<Book>(); 			
 			
+			// (Book) 으로 다운 캐스팅 하여 저장
 			while(true) {
-				list.add((Book)ois.readObject());
+				list.add((Book)ois.readObject()); // readObject 직렬화 하기 전 객체로 저장하는 메소드
+																			// 직렬화 전 객체로 다운 캐스팅을 해줘야 함 = (Book)
 			}
-		} catch (EOFException e) {
+			
+		} catch (EOFException e) { // EOFException 에러 파일의 끝에 도달 했을 경우 출력하는 에러
+														// 더이상 읽어올 데이털가 없을때 나온다. 따라서 데이터가 없을 경우 다 읽어 왔다는 메시지를 출력하게 한다.
 			System.out.println("파일 읽기 완료!");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -75,13 +87,16 @@ public class BookListTest {
 			e.printStackTrace();
 		}
 		
+		// list에 담아서 돌려준다
 		return list;
 	}
 	
 	private void printList(List<Book> List) {
-		 // 리스트에 저장된 객체 정보를 출력한다.
+
+		// for - each 반복문으로 출력
 		for(Book b : List) {
-			System.out.println(b.toString());
+		//	System.out.println(b.toString());
+			System.out.printf("할인된 가격 : %d원 \n", (int)(b.getPrice()*(1 - b.getDiscountRate())));
 		}
 	}
 

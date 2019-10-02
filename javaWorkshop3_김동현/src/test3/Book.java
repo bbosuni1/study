@@ -26,11 +26,9 @@ public class Book implements Serializable {
 	}
 
 	// toString 재정의
-	
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", price=" + price + ", publisher=" + publisher
-				+ ", discountRate=" + discountRate + "]";
+		return title + ", " + author + ", " + publisher + ", " + price	+ "원, " + (int)(discountRate * 100) + "% 할인";
 	}
 
 	// getter & setter 
